@@ -1351,45 +1351,45 @@ public object FfiConverterTypeProofResult : FfiConverterRustBuffer<ProofResult> 
  */
 sealed class ZkProofException : kotlin.Exception() {
     class FileNotFound(
-        val `message`: kotlin.String,
+        val `msg`: kotlin.String,
     ) : ZkProofException() {
         override val message
-            get() = "message=${ `message` }"
+            get() = "msg=${ `msg` }"
     }
 
     class ProofGenerationFailed(
-        val `message`: kotlin.String,
+        val `msg`: kotlin.String,
     ) : ZkProofException() {
         override val message
-            get() = "message=${ `message` }"
+            get() = "msg=${ `msg` }"
     }
 
     class VerificationFailed(
-        val `message`: kotlin.String,
+        val `msg`: kotlin.String,
     ) : ZkProofException() {
         override val message
-            get() = "message=${ `message` }"
+            get() = "msg=${ `msg` }"
     }
 
     class InvalidInput(
-        val `message`: kotlin.String,
+        val `msg`: kotlin.String,
     ) : ZkProofException() {
         override val message
-            get() = "message=${ `message` }"
+            get() = "msg=${ `msg` }"
     }
 
     class SetupRequired(
-        val `message`: kotlin.String,
+        val `msg`: kotlin.String,
     ) : ZkProofException() {
         override val message
-            get() = "message=${ `message` }"
+            get() = "msg=${ `msg` }"
     }
 
     class IoException(
-        val `message`: kotlin.String,
+        val `msg`: kotlin.String,
     ) : ZkProofException() {
         override val message
-            get() = "message=${ `message` }"
+            get() = "msg=${ `msg` }"
     }
 
     companion object ErrorHandler : UniffiRustCallStatusErrorHandler<ZkProofException> {
@@ -1435,32 +1435,32 @@ public object FfiConverterTypeZkProofError : FfiConverterRustBuffer<ZkProofExcep
             is ZkProofException.FileNotFound -> (
                 // Add the size for the Int that specifies the variant plus the size needed for all fields
                 4UL +
-                    FfiConverterString.allocationSize(value.`message`)
+                    FfiConverterString.allocationSize(value.`msg`)
             )
             is ZkProofException.ProofGenerationFailed -> (
                 // Add the size for the Int that specifies the variant plus the size needed for all fields
                 4UL +
-                    FfiConverterString.allocationSize(value.`message`)
+                    FfiConverterString.allocationSize(value.`msg`)
             )
             is ZkProofException.VerificationFailed -> (
                 // Add the size for the Int that specifies the variant plus the size needed for all fields
                 4UL +
-                    FfiConverterString.allocationSize(value.`message`)
+                    FfiConverterString.allocationSize(value.`msg`)
             )
             is ZkProofException.InvalidInput -> (
                 // Add the size for the Int that specifies the variant plus the size needed for all fields
                 4UL +
-                    FfiConverterString.allocationSize(value.`message`)
+                    FfiConverterString.allocationSize(value.`msg`)
             )
             is ZkProofException.SetupRequired -> (
                 // Add the size for the Int that specifies the variant plus the size needed for all fields
                 4UL +
-                    FfiConverterString.allocationSize(value.`message`)
+                    FfiConverterString.allocationSize(value.`msg`)
             )
             is ZkProofException.IoException -> (
                 // Add the size for the Int that specifies the variant plus the size needed for all fields
                 4UL +
-                    FfiConverterString.allocationSize(value.`message`)
+                    FfiConverterString.allocationSize(value.`msg`)
             )
         }
 
@@ -1471,32 +1471,32 @@ public object FfiConverterTypeZkProofError : FfiConverterRustBuffer<ZkProofExcep
         when (value) {
             is ZkProofException.FileNotFound -> {
                 buf.putInt(1)
-                FfiConverterString.write(value.`message`, buf)
+                FfiConverterString.write(value.`msg`, buf)
                 Unit
             }
             is ZkProofException.ProofGenerationFailed -> {
                 buf.putInt(2)
-                FfiConverterString.write(value.`message`, buf)
+                FfiConverterString.write(value.`msg`, buf)
                 Unit
             }
             is ZkProofException.VerificationFailed -> {
                 buf.putInt(3)
-                FfiConverterString.write(value.`message`, buf)
+                FfiConverterString.write(value.`msg`, buf)
                 Unit
             }
             is ZkProofException.InvalidInput -> {
                 buf.putInt(4)
-                FfiConverterString.write(value.`message`, buf)
+                FfiConverterString.write(value.`msg`, buf)
                 Unit
             }
             is ZkProofException.SetupRequired -> {
                 buf.putInt(5)
-                FfiConverterString.write(value.`message`, buf)
+                FfiConverterString.write(value.`msg`, buf)
                 Unit
             }
             is ZkProofException.IoException -> {
                 buf.putInt(6)
-                FfiConverterString.write(value.`message`, buf)
+                FfiConverterString.write(value.`msg`, buf)
                 Unit
             }
         }.let { /* this makes the `when` an expression, which ensures it is exhaustive */ }
