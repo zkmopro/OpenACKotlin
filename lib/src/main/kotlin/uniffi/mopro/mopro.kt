@@ -729,6 +729,16 @@ internal interface UniffiForeignFutureCompleteVoid : com.sun.jna.Callback {
 
 
 
+
+
+
+
+
+
+
+
+
+
 // For large crates we prevent `MethodTooLargeException` (see #2340)
 // N.B. the name of the extension is very misleading, since it is 
 // rather `InterfaceTooLargeException`, caused by too many methods 
@@ -744,7 +754,13 @@ internal interface UniffiForeignFutureCompleteVoid : com.sun.jna.Callback {
 // when the library is loaded.
 internal interface IntegrityCheckingUniffiLib : Library {
     // Integrity check functions only
-    fun uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input(
+    fun uniffi_openac_mobile_app_checksum_func_build_smt_from_snapshot(
+): Short
+fun uniffi_openac_mobile_app_checksum_func_create_smt_proof(
+): Short
+fun uniffi_openac_mobile_app_checksum_func_create_smt_proof_from_gz(
+): Short
+fun uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input(
 ): Short
 fun uniffi_openac_mobile_app_checksum_func_link_verify(
 ): Short
@@ -758,9 +774,13 @@ fun uniffi_openac_mobile_app_checksum_func_run_complete_benchmark(
 ): Short
 fun uniffi_openac_mobile_app_checksum_func_setup_keys(
 ): Short
+fun uniffi_openac_mobile_app_checksum_func_smt_proof_to_circuit_inputs(
+): Short
 fun uniffi_openac_mobile_app_checksum_func_verify_cert_chain_rs4096(
 ): Short
 fun uniffi_openac_mobile_app_checksum_func_verify_device_sig_rs2048(
+): Short
+fun uniffi_openac_mobile_app_checksum_func_verify_smt_proof(
 ): Short
 fun ffi_openac_mobile_app_uniffi_contract_version(
 ): Int
@@ -807,7 +827,13 @@ internal interface UniffiLib : Library {
     }
 
     // FFI functions
-    fun uniffi_openac_mobile_app_fn_func_generate_cert_chain_rs4096_input(`certb64`: RustBuffer.ByValue,`signedResponse`: RustBuffer.ByValue,`tbs`: RustBuffer.ByValue,`issuerCertPath`: RustBuffer.ByValue,`smtServer`: RustBuffer.ByValue,`issuerId`: RustBuffer.ByValue,`outputDir`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+    fun uniffi_openac_mobile_app_fn_func_build_smt_from_snapshot(`snapshotJson`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+): RustBuffer.ByValue
+fun uniffi_openac_mobile_app_fn_func_create_smt_proof(`snapshotJson`: RustBuffer.ByValue,`keyHex`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+): RustBuffer.ByValue
+fun uniffi_openac_mobile_app_fn_func_create_smt_proof_from_gz(`gzData`: RustBuffer.ByValue,`keyHex`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+): RustBuffer.ByValue
+fun uniffi_openac_mobile_app_fn_func_generate_cert_chain_rs4096_input(`certb64`: RustBuffer.ByValue,`signedResponse`: RustBuffer.ByValue,`tbs`: RustBuffer.ByValue,`issuerCertPath`: RustBuffer.ByValue,`smtSnapshotPath`: RustBuffer.ByValue,`outputDir`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_link_verify(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Byte
@@ -821,9 +847,13 @@ fun uniffi_openac_mobile_app_fn_func_run_complete_benchmark(`documentsPath`: Rus
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_setup_keys(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
+fun uniffi_openac_mobile_app_fn_func_smt_proof_to_circuit_inputs(`proof`: RustBuffer.ByValue,`depth`: Int,uniffi_out_err: UniffiRustCallStatus, 
+): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_verify_cert_chain_rs4096(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Byte
 fun uniffi_openac_mobile_app_fn_func_verify_device_sig_rs2048(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+): Byte
+fun uniffi_openac_mobile_app_fn_func_verify_smt_proof(`proof`: RustBuffer.ByValue,`expectedRoot`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Byte
 fun ffi_openac_mobile_app_rustbuffer_alloc(`size`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
@@ -951,7 +981,16 @@ private fun uniffiCheckContractApiVersion(lib: IntegrityCheckingUniffiLib) {
 }
 @Suppress("UNUSED_PARAMETER")
 private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
-    if (lib.uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input() != 45535.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_build_smt_from_snapshot() != 37072.toShort()) {
+        throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
+    }
+    if (lib.uniffi_openac_mobile_app_checksum_func_create_smt_proof() != 25623.toShort()) {
+        throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
+    }
+    if (lib.uniffi_openac_mobile_app_checksum_func_create_smt_proof_from_gz() != 33213.toShort()) {
+        throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
+    }
+    if (lib.uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input() != 14364.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
     if (lib.uniffi_openac_mobile_app_checksum_func_link_verify() != 4694.toShort()) {
@@ -972,10 +1011,16 @@ private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
     if (lib.uniffi_openac_mobile_app_checksum_func_setup_keys() != 1011.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
+    if (lib.uniffi_openac_mobile_app_checksum_func_smt_proof_to_circuit_inputs() != 957.toShort()) {
+        throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
+    }
     if (lib.uniffi_openac_mobile_app_checksum_func_verify_cert_chain_rs4096() != 13705.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
     if (lib.uniffi_openac_mobile_app_checksum_func_verify_device_sig_rs2048() != 39939.toShort()) {
+        throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
+    }
+    if (lib.uniffi_openac_mobile_app_checksum_func_verify_smt_proof() != 34213.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
 }
@@ -1031,6 +1076,29 @@ inline fun <T : Disposable?, R> T.use(block: (T) -> R) =
  * @suppress
  * */
 object NoPointer
+
+/**
+ * @suppress
+ */
+public object FfiConverterUInt: FfiConverter<UInt, Int> {
+    override fun lift(value: Int): UInt {
+        return value.toUInt()
+    }
+
+    override fun read(buf: ByteBuffer): UInt {
+        return lift(buf.getInt())
+    }
+
+    override fun lower(value: UInt): Int {
+        return value.toInt()
+    }
+
+    override fun allocationSize(value: UInt) = 4UL
+
+    override fun write(value: UInt, buf: ByteBuffer) {
+        buf.putInt(value.toInt())
+    }
+}
 
 /**
  * @suppress
@@ -1135,6 +1203,25 @@ public object FfiConverterString: FfiConverter<String, RustBuffer.ByValue> {
     }
 }
 
+/**
+ * @suppress
+ */
+public object FfiConverterByteArray: FfiConverterRustBuffer<ByteArray> {
+    override fun read(buf: ByteBuffer): ByteArray {
+        val len = buf.getInt()
+        val byteArr = ByteArray(len)
+        buf.get(byteArr)
+        return byteArr
+    }
+    override fun allocationSize(value: ByteArray): ULong {
+        return 4UL + value.size.toULong()
+    }
+    override fun write(value: ByteArray, buf: ByteBuffer) {
+        buf.putInt(value.size)
+        buf.put(value)
+    }
+}
+
 
 
 /**
@@ -1223,6 +1310,120 @@ public object FfiConverterTypeProofResult: FfiConverterRustBuffer<ProofResult> {
     override fun write(value: ProofResult, buf: ByteBuffer) {
             FfiConverterULong.write(value.`proveMs`, buf)
             FfiConverterULong.write(value.`proofSizeBytes`, buf)
+    }
+}
+
+
+
+/**
+ * Circom-ready SMT inputs — all values as decimal strings, siblings padded to depth.
+ * Mirrors `ecdsa_spartan2::smt_client::SmtCircuitInputs`.
+ */
+data class SmtCircuitInputs (
+    var `smtRoot`: kotlin.String, 
+    var `serialNumber`: kotlin.String, 
+    var `smtSiblings`: List<kotlin.String>, 
+    var `smtOldKey`: kotlin.String, 
+    var `smtOldValue`: kotlin.String, 
+    var `smtIsOld0`: kotlin.String
+) {
+    
+    companion object
+}
+
+/**
+ * @suppress
+ */
+public object FfiConverterTypeSmtCircuitInputs: FfiConverterRustBuffer<SmtCircuitInputs> {
+    override fun read(buf: ByteBuffer): SmtCircuitInputs {
+        return SmtCircuitInputs(
+            FfiConverterString.read(buf),
+            FfiConverterString.read(buf),
+            FfiConverterSequenceString.read(buf),
+            FfiConverterString.read(buf),
+            FfiConverterString.read(buf),
+            FfiConverterString.read(buf),
+        )
+    }
+
+    override fun allocationSize(value: SmtCircuitInputs) = (
+            FfiConverterString.allocationSize(value.`smtRoot`) +
+            FfiConverterString.allocationSize(value.`serialNumber`) +
+            FfiConverterSequenceString.allocationSize(value.`smtSiblings`) +
+            FfiConverterString.allocationSize(value.`smtOldKey`) +
+            FfiConverterString.allocationSize(value.`smtOldValue`) +
+            FfiConverterString.allocationSize(value.`smtIsOld0`)
+    )
+
+    override fun write(value: SmtCircuitInputs, buf: ByteBuffer) {
+            FfiConverterString.write(value.`smtRoot`, buf)
+            FfiConverterString.write(value.`serialNumber`, buf)
+            FfiConverterSequenceString.write(value.`smtSiblings`, buf)
+            FfiConverterString.write(value.`smtOldKey`, buf)
+            FfiConverterString.write(value.`smtOldValue`, buf)
+            FfiConverterString.write(value.`smtIsOld0`, buf)
+    }
+}
+
+
+
+/**
+ * SMT proof from the moica-revocation-smt server, all values as hex strings.
+ */
+data class SmtProof (
+    /**
+     * Tree root at proof time (hex string).
+     */
+    var `root`: kotlin.String, 
+    /**
+     * Sibling hashes from leaf level upward (hex strings).
+     */
+    var `siblings`: List<kotlin.String>, 
+    /**
+     * [key] for non-membership; [key, value, marker] for membership.
+     */
+    var `entry`: List<kotlin.String>, 
+    /**
+     * Present for non-membership proofs when a conflicting leaf exists.
+     */
+    var `matchingEntry`: List<kotlin.String>?, 
+    /**
+     * True if the key is claimed to exist in the tree.
+     */
+    var `membership`: kotlin.Boolean
+) {
+    
+    companion object
+}
+
+/**
+ * @suppress
+ */
+public object FfiConverterTypeSmtProof: FfiConverterRustBuffer<SmtProof> {
+    override fun read(buf: ByteBuffer): SmtProof {
+        return SmtProof(
+            FfiConverterString.read(buf),
+            FfiConverterSequenceString.read(buf),
+            FfiConverterSequenceString.read(buf),
+            FfiConverterOptionalSequenceString.read(buf),
+            FfiConverterBoolean.read(buf),
+        )
+    }
+
+    override fun allocationSize(value: SmtProof) = (
+            FfiConverterString.allocationSize(value.`root`) +
+            FfiConverterSequenceString.allocationSize(value.`siblings`) +
+            FfiConverterSequenceString.allocationSize(value.`entry`) +
+            FfiConverterOptionalSequenceString.allocationSize(value.`matchingEntry`) +
+            FfiConverterBoolean.allocationSize(value.`membership`)
+    )
+
+    override fun write(value: SmtProof, buf: ByteBuffer) {
+            FfiConverterString.write(value.`root`, buf)
+            FfiConverterSequenceString.write(value.`siblings`, buf)
+            FfiConverterSequenceString.write(value.`entry`, buf)
+            FfiConverterOptionalSequenceString.write(value.`matchingEntry`, buf)
+            FfiConverterBoolean.write(value.`membership`, buf)
     }
 }
 
@@ -1424,6 +1625,119 @@ public object FfiConverterOptionalString: FfiConverterRustBuffer<kotlin.String?>
         }
     }
 }
+
+
+
+
+/**
+ * @suppress
+ */
+public object FfiConverterOptionalSequenceString: FfiConverterRustBuffer<List<kotlin.String>?> {
+    override fun read(buf: ByteBuffer): List<kotlin.String>? {
+        if (buf.get().toInt() == 0) {
+            return null
+        }
+        return FfiConverterSequenceString.read(buf)
+    }
+
+    override fun allocationSize(value: List<kotlin.String>?): ULong {
+        if (value == null) {
+            return 1UL
+        } else {
+            return 1UL + FfiConverterSequenceString.allocationSize(value)
+        }
+    }
+
+    override fun write(value: List<kotlin.String>?, buf: ByteBuffer) {
+        if (value == null) {
+            buf.put(0)
+        } else {
+            buf.put(1)
+            FfiConverterSequenceString.write(value, buf)
+        }
+    }
+}
+
+
+
+
+/**
+ * @suppress
+ */
+public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.String>> {
+    override fun read(buf: ByteBuffer): List<kotlin.String> {
+        val len = buf.getInt()
+        return List<kotlin.String>(len) {
+            FfiConverterString.read(buf)
+        }
+    }
+
+    override fun allocationSize(value: List<kotlin.String>): ULong {
+        val sizeForLength = 4UL
+        val sizeForItems = value.map { FfiConverterString.allocationSize(it) }.sum()
+        return sizeForLength + sizeForItems
+    }
+
+    override fun write(value: List<kotlin.String>, buf: ByteBuffer) {
+        buf.putInt(value.size)
+        value.iterator().forEach {
+            FfiConverterString.write(it, buf)
+        }
+    }
+}
+        /**
+         * Parse a @zk-kit/smt v1.0.2-compatible snapshot JSON and return its root.
+         *
+         * The returned root can be used as `expected_root` in subsequent calls to
+         * `verify_smt_proof`.
+         */ fun `buildSmtFromSnapshot`(`snapshotJson`: kotlin.String): kotlin.String {
+            return FfiConverterString.lift(
+    uniffiRustCall() { _status ->
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_build_smt_from_snapshot(
+        FfiConverterString.lower(`snapshotJson`),_status)
+}
+    )
+    }
+    
+
+        /**
+         * Load a snapshot and generate a proof for `key_hex` in one call (JSON input).
+         *
+         * # Arguments
+         * * `snapshot_json` – decompressed snapshot JSON string
+         * * `key_hex`       – certificate serial number as a hex string (with or without `0x`)
+         *
+         * Returns the proof ready to pass straight into `verify_smt_proof`.
+         */
+    @Throws(ZkProofException::class) fun `createSmtProof`(`snapshotJson`: kotlin.String, `keyHex`: kotlin.String): SmtProof {
+            return FfiConverterTypeSmtProof.lift(
+    uniffiRustCallWithError(ZkProofException) { _status ->
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_create_smt_proof(
+        FfiConverterString.lower(`snapshotJson`),FfiConverterString.lower(`keyHex`),_status)
+}
+    )
+    }
+    
+
+        /**
+         * Load a snapshot and generate a proof for `key_hex` in one call (gzip input).
+         *
+         * # Arguments
+         * * `gz_data` – raw bytes of the `.json.gz` snapshot file
+         * * `key_hex` – certificate serial number as a hex string (with or without `0x`)
+         *
+         * Returns the proof ready to pass straight into `verify_smt_proof`.
+         */
+    @Throws(ZkProofException::class) fun `createSmtProofFromGz`(`gzData`: kotlin.ByteArray, `keyHex`: kotlin.String): SmtProof {
+            return FfiConverterTypeSmtProof.lift(
+    uniffiRustCallWithError(ZkProofException) { _status ->
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_create_smt_proof_from_gz(
+        FfiConverterByteArray.lower(`gzData`),FfiConverterString.lower(`keyHex`),_status)
+}
+    )
+    }
+    
+
         /**
          * Generate split circuit inputs for both cert_chain_rs4096 and device_sig_rs2048.
          *
@@ -1432,12 +1746,16 @@ public object FfiConverterOptionalString: FfiConverterRustBuffer<kotlin.String?>
          * - `device_sig_rs2048_input.json`
          *
          * These are the input files expected by `prove` via `PathConfig::mobile`.
+         *
+         * `smt_proof` should be the non-membership proof for the certificate's serial
+         * number, produced by `create_smt_proof_from_gz` / `create_smt_proof`.
+         * Pass `None` to omit SMT revocation checking.
          */
-    @Throws(ZkProofException::class) fun `generateCertChainRs4096Input`(`certb64`: kotlin.String, `signedResponse`: kotlin.String, `tbs`: kotlin.String, `issuerCertPath`: kotlin.String, `smtServer`: kotlin.String?, `issuerId`: kotlin.String, `outputDir`: kotlin.String): kotlin.String {
+    @Throws(ZkProofException::class) fun `generateCertChainRs4096Input`(`certb64`: kotlin.String, `signedResponse`: kotlin.String, `tbs`: kotlin.String, `issuerCertPath`: kotlin.String, `smtSnapshotPath`: kotlin.String?, `outputDir`: kotlin.String): kotlin.String {
             return FfiConverterString.lift(
     uniffiRustCallWithError(ZkProofException) { _status ->
     UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_generate_cert_chain_rs4096_input(
-        FfiConverterString.lower(`certb64`),FfiConverterString.lower(`signedResponse`),FfiConverterString.lower(`tbs`),FfiConverterString.lower(`issuerCertPath`),FfiConverterOptionalString.lower(`smtServer`),FfiConverterString.lower(`issuerId`),FfiConverterString.lower(`outputDir`),_status)
+        FfiConverterString.lower(`certb64`),FfiConverterString.lower(`signedResponse`),FfiConverterString.lower(`tbs`),FfiConverterString.lower(`issuerCertPath`),FfiConverterOptionalString.lower(`smtSnapshotPath`),FfiConverterString.lower(`outputDir`),_status)
 }
     )
     }
@@ -1547,6 +1865,23 @@ public object FfiConverterOptionalString: FfiConverterRustBuffer<kotlin.String?>
     
 
         /**
+         * Convert an `SmtProof` (hex strings) into the `SmtCircuitInputs` that the
+         * Circom cert-chain circuit expects (decimal strings, siblings padded to `depth`).
+         *
+         * This is the offline equivalent of `ecdsa_spartan2::smt_client::fetch_smt_proof`:
+         * instead of hitting the server you supply the proof generated from the local snapshot.
+         */
+    @Throws(ZkProofException::class) fun `smtProofToCircuitInputs`(`proof`: SmtProof, `depth`: kotlin.UInt): SmtCircuitInputs {
+            return FfiConverterTypeSmtCircuitInputs.lift(
+    uniffiRustCallWithError(ZkProofException) { _status ->
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_smt_proof_to_circuit_inputs(
+        FfiConverterTypeSmtProof.lower(`proof`),FfiConverterUInt.lower(`depth`),_status)
+}
+    )
+    }
+    
+
+        /**
          * Verify proofs for cert_chain_rs4096 circuit.
          */
     @Throws(ZkProofException::class) fun `verifyCertChainRs4096`(`documentsPath`: kotlin.String): kotlin.Boolean {
@@ -1567,6 +1902,22 @@ public object FfiConverterOptionalString: FfiConverterRustBuffer<kotlin.String?>
     uniffiRustCallWithError(ZkProofException) { _status ->
     UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_verify_device_sig_rs2048(
         FfiConverterString.lower(`documentsPath`),_status)
+}
+    )
+    }
+    
+
+        /**
+         * Verify an SMT non-membership (or membership) proof against a trusted root.
+         *
+         * Recomputes the Merkle root from `proof.entry` + `proof.siblings` using
+         * Poseidon-P256, then compares against `expected_root`.  Returns `true` iff
+         * the proof is valid.
+         */ fun `verifySmtProof`(`proof`: SmtProof, `expectedRoot`: kotlin.String): kotlin.Boolean {
+            return FfiConverterBoolean.lift(
+    uniffiRustCall() { _status ->
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_verify_smt_proof(
+        FfiConverterTypeSmtProof.lower(`proof`),FfiConverterString.lower(`expectedRoot`),_status)
 }
     )
     }
