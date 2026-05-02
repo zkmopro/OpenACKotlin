@@ -833,7 +833,7 @@ fun uniffi_openac_mobile_app_fn_func_create_smt_proof(`snapshotJson`: RustBuffer
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_create_smt_proof_from_gz(`gzData`: RustBuffer.ByValue,`keyHex`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
-fun uniffi_openac_mobile_app_fn_func_generate_cert_chain_rs4096_input(`certb64`: RustBuffer.ByValue,`signedResponse`: RustBuffer.ByValue,`tbs`: RustBuffer.ByValue,`issuerCertPath`: RustBuffer.ByValue,`smtSnapshotPath`: RustBuffer.ByValue,`outputDir`: RustBuffer.ByValue,`pkBlind`: RustBuffer.ByValue,`challenge`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+fun uniffi_openac_mobile_app_fn_func_generate_cert_chain_rs4096_input(`certb64`: RustBuffer.ByValue,`signedResponse`: RustBuffer.ByValue,`tbs`: RustBuffer.ByValue,`issuerCertPath`: RustBuffer.ByValue,`smtSnapshotPath`: RustBuffer.ByValue,`outputDir`: RustBuffer.ByValue,`challenge`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_link_verify(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Byte
@@ -990,7 +990,7 @@ private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
     if (lib.uniffi_openac_mobile_app_checksum_func_create_smt_proof_from_gz() != 33213.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input() != 19694.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input() != 55912.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
     if (lib.uniffi_openac_mobile_app_checksum_func_link_verify() != 4694.toShort()) {
@@ -1751,11 +1751,11 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
          * number, produced by `create_smt_proof_from_gz` / `create_smt_proof`.
          * Pass `None` to omit SMT revocation checking.
          */
-    @Throws(ZkProofException::class) fun `generateCertChainRs4096Input`(`certb64`: kotlin.String, `signedResponse`: kotlin.String, `tbs`: kotlin.String, `issuerCertPath`: kotlin.String, `smtSnapshotPath`: kotlin.String?, `outputDir`: kotlin.String, `pkBlind`: kotlin.String, `challenge`: kotlin.String): kotlin.String {
+    @Throws(ZkProofException::class) fun `generateCertChainRs4096Input`(`certb64`: kotlin.String, `signedResponse`: kotlin.String, `tbs`: kotlin.String, `issuerCertPath`: kotlin.String, `smtSnapshotPath`: kotlin.String?, `outputDir`: kotlin.String, `challenge`: kotlin.String): kotlin.String {
             return FfiConverterString.lift(
     uniffiRustCallWithError(ZkProofException) { _status ->
     UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_generate_cert_chain_rs4096_input(
-        FfiConverterString.lower(`certb64`),FfiConverterString.lower(`signedResponse`),FfiConverterString.lower(`tbs`),FfiConverterString.lower(`issuerCertPath`),FfiConverterOptionalString.lower(`smtSnapshotPath`),FfiConverterString.lower(`outputDir`),FfiConverterString.lower(`pkBlind`),FfiConverterString.lower(`challenge`),_status)
+        FfiConverterString.lower(`certb64`),FfiConverterString.lower(`signedResponse`),FfiConverterString.lower(`tbs`),FfiConverterString.lower(`issuerCertPath`),FfiConverterOptionalString.lower(`smtSnapshotPath`),FfiConverterString.lower(`outputDir`),FfiConverterString.lower(`challenge`),_status)
 }
     )
     }
