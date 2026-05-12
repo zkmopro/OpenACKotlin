@@ -768,7 +768,7 @@ fun uniffi_openac_mobile_app_checksum_func_mopro_hello_world(
 ): Short
 fun uniffi_openac_mobile_app_checksum_func_prove_cert_chain_rs4096(
 ): Short
-fun uniffi_openac_mobile_app_checksum_func_prove_device_sig_rs2048(
+fun uniffi_openac_mobile_app_checksum_func_prove_user_sig_rs2048(
 ): Short
 fun uniffi_openac_mobile_app_checksum_func_run_complete_benchmark(
 ): Short
@@ -778,9 +778,9 @@ fun uniffi_openac_mobile_app_checksum_func_smt_proof_to_circuit_inputs(
 ): Short
 fun uniffi_openac_mobile_app_checksum_func_verify_cert_chain_rs4096(
 ): Short
-fun uniffi_openac_mobile_app_checksum_func_verify_device_sig_rs2048(
-): Short
 fun uniffi_openac_mobile_app_checksum_func_verify_smt_proof(
+): Short
+fun uniffi_openac_mobile_app_checksum_func_verify_user_sig_rs2048(
 ): Short
 fun ffi_openac_mobile_app_uniffi_contract_version(
 ): Int
@@ -841,7 +841,7 @@ fun uniffi_openac_mobile_app_fn_func_mopro_hello_world(uniffi_out_err: UniffiRus
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_prove_cert_chain_rs4096(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
-fun uniffi_openac_mobile_app_fn_func_prove_device_sig_rs2048(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+fun uniffi_openac_mobile_app_fn_func_prove_user_sig_rs2048(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_run_complete_benchmark(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
@@ -851,9 +851,9 @@ fun uniffi_openac_mobile_app_fn_func_smt_proof_to_circuit_inputs(`proof`: RustBu
 ): RustBuffer.ByValue
 fun uniffi_openac_mobile_app_fn_func_verify_cert_chain_rs4096(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Byte
-fun uniffi_openac_mobile_app_fn_func_verify_device_sig_rs2048(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
-): Byte
 fun uniffi_openac_mobile_app_fn_func_verify_smt_proof(`proof`: RustBuffer.ByValue,`expectedRoot`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
+): Byte
+fun uniffi_openac_mobile_app_fn_func_verify_user_sig_rs2048(`documentsPath`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Byte
 fun ffi_openac_mobile_app_rustbuffer_alloc(`size`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
@@ -990,10 +990,10 @@ private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
     if (lib.uniffi_openac_mobile_app_checksum_func_create_smt_proof_from_gz() != 33213.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input() != 55912.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_generate_cert_chain_rs4096_input() != 13849.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_link_verify() != 4694.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_link_verify() != 54000.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
     if (lib.uniffi_openac_mobile_app_checksum_func_mopro_hello_world() != 46672.toShort()) {
@@ -1002,13 +1002,13 @@ private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
     if (lib.uniffi_openac_mobile_app_checksum_func_prove_cert_chain_rs4096() != 42180.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_prove_device_sig_rs2048() != 31190.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_prove_user_sig_rs2048() != 56957.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_run_complete_benchmark() != 7344.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_run_complete_benchmark() != 17448.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_setup_keys() != 1011.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_setup_keys() != 52744.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
     if (lib.uniffi_openac_mobile_app_checksum_func_smt_proof_to_circuit_inputs() != 957.toShort()) {
@@ -1017,10 +1017,10 @@ private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
     if (lib.uniffi_openac_mobile_app_checksum_func_verify_cert_chain_rs4096() != 13705.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_verify_device_sig_rs2048() != 39939.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_verify_smt_proof() != 34213.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_verify_smt_proof() != 34213.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_verify_user_sig_rs2048() != 61446.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
 }
@@ -1739,11 +1739,11 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     
 
         /**
-         * Generate split circuit inputs for both cert_chain_rs4096 and device_sig_rs2048.
+         * Generate split circuit inputs for both cert_chain_rs4096 and user_sig_rs2048.
          *
          * Writes two JSON files into `output_dir`:
          * - `cert_chain_rs4096_input.json`
-         * - `device_sig_rs2048_input.json`
+         * - `user_sig_rs2048_input.json`
          *
          * These are the input files expected by `prove` via `PathConfig::mobile`.
          *
@@ -1762,7 +1762,7 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     
 
         /**
-         * Verify proofs for cert_chain_rs4096 and device_sig_rs2048 circuits.
+         * Verify proofs for cert_chain_rs4096 and user_sig_rs2048 circuits.
          */
     @Throws(ZkProofException::class) fun `linkVerify`(`documentsPath`: kotlin.String): kotlin.Boolean {
             return FfiConverterBoolean.lift(
@@ -1808,21 +1808,21 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     
 
         /**
-         * Generate proofs for both cert_chain_rs4096 and device_sig_rs2048 circuits.
+         * Generate proofs for both cert_chain_rs4096 and user_sig_rs2048 circuits.
          *
          * Reads input JSONs via `PathConfig::mobile(documents_path)`:
          * - `{documents_path}/cert_chain_rs4096_input.json`
-         * - `{documents_path}/device_sig_rs2048_input.json`
+         * - `{documents_path}/user_sig_rs2048_input.json`
          *
          * Writes proofs, instances, and witnesses under `{documents_path}/keys/`.
          *
          * Witnesses are pre-warmed before any Spartan2 key I/O so that witnesscalc's
          * C++ realloc runs on a clean heap and avoids macOS SIGSEGV from moved pointers.
          */
-    @Throws(ZkProofException::class) fun `proveDeviceSigRs2048`(`documentsPath`: kotlin.String): ProofResult {
+    @Throws(ZkProofException::class) fun `proveUserSigRs2048`(`documentsPath`: kotlin.String): ProofResult {
             return FfiConverterTypeProofResult.lift(
     uniffiRustCallWithError(ZkProofException) { _status ->
-    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_prove_device_sig_rs2048(
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_prove_user_sig_rs2048(
         FfiConverterString.lower(`documentsPath`),_status)
 }
     )
@@ -1830,7 +1830,7 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     
 
         /**
-         * Run complete benchmark pipeline for both cert_chain_rs4096 and device_sig_rs2048 circuits.
+         * Run complete benchmark pipeline for both cert_chain_rs4096 and user_sig_rs2048 circuits.
          *
          * Witnesses are pre-warmed on a clean heap before Spartan2 setup to prevent macOS SIGSEGV:
          * witnesscalc's C++ `realloc()` moves large allocations on a fragmented heap, leaving stale
@@ -1849,10 +1849,10 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     
 
         /**
-         * Setup circuit keys for both cert_chain_rs4096 and device_sig_rs2048.
+         * Setup circuit keys for both cert_chain_rs4096 and user_sig_rs2048.
          *
          * Requires that `{documents_path}/cert_chain_rs4096.r1cs` and
-         * `{documents_path}/device_sig_rs2048.r1cs` are present.
+         * `{documents_path}/user_sig_rs2048.r1cs` are present.
          */
     @Throws(ZkProofException::class) fun `setupKeys`(`documentsPath`: kotlin.String): kotlin.String {
             return FfiConverterString.lift(
@@ -1895,19 +1895,6 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     
 
         /**
-         * Verify proofs for device_sig_rs2048 circuit.
-         */
-    @Throws(ZkProofException::class) fun `verifyDeviceSigRs2048`(`documentsPath`: kotlin.String): kotlin.Boolean {
-            return FfiConverterBoolean.lift(
-    uniffiRustCallWithError(ZkProofException) { _status ->
-    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_verify_device_sig_rs2048(
-        FfiConverterString.lower(`documentsPath`),_status)
-}
-    )
-    }
-    
-
-        /**
          * Verify an SMT non-membership (or membership) proof against a trusted root.
          *
          * Recomputes the Merkle root from `proof.entry` + `proof.siblings` using
@@ -1918,6 +1905,19 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
     uniffiRustCall() { _status ->
     UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_verify_smt_proof(
         FfiConverterTypeSmtProof.lower(`proof`),FfiConverterString.lower(`expectedRoot`),_status)
+}
+    )
+    }
+    
+
+        /**
+         * Verify proofs for user_sig_rs2048 circuit.
+         */
+    @Throws(ZkProofException::class) fun `verifyUserSigRs2048`(`documentsPath`: kotlin.String): kotlin.Boolean {
+            return FfiConverterBoolean.lift(
+    uniffiRustCallWithError(ZkProofException) { _status ->
+    UniffiLib.INSTANCE.uniffi_openac_mobile_app_fn_func_verify_user_sig_rs2048(
+        FfiConverterString.lower(`documentsPath`),_status)
 }
     )
     }
