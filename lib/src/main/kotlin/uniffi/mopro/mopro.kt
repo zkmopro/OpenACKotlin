@@ -1008,7 +1008,7 @@ private fun uniffiCheckApiChecksums(lib: IntegrityCheckingUniffiLib) {
     if (lib.uniffi_openac_mobile_app_checksum_func_run_complete_benchmark() != 17448.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
-    if (lib.uniffi_openac_mobile_app_checksum_func_setup_keys() != 52744.toShort()) {
+    if (lib.uniffi_openac_mobile_app_checksum_func_setup_keys() != 42464.toShort()) {
         throw RuntimeException("UniFFI API checksum mismatch: try cleaning and rebuilding your project")
     }
     if (lib.uniffi_openac_mobile_app_checksum_func_smt_proof_to_circuit_inputs() != 957.toShort()) {
@@ -1851,8 +1851,8 @@ public object FfiConverterSequenceString: FfiConverterRustBuffer<List<kotlin.Str
         /**
          * Setup circuit keys for both cert_chain_rs4096 and user_sig_rs2048.
          *
-         * Requires that `{documents_path}/cert_chain_rs4096.r1cs` and
-         * `{documents_path}/user_sig_rs2048.r1cs` are present.
+         * Requires that `{documents_path}/certChainRS4096.r1cs` and
+         * `{documents_path}/userSigRS2048.r1cs` are present.
          */
     @Throws(ZkProofException::class) fun `setupKeys`(`documentsPath`: kotlin.String): kotlin.String {
             return FfiConverterString.lift(
